@@ -1,0 +1,155 @@
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
+
+// variables
+$primary: #39cdcc;
+$secondary: #213f7d;
+
+.login-page {
+  width: 100%;
+  height: 100vh;
+
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    .banner {
+      background-color: #e5e5e5;
+      padding-top: 4rem;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      @include mobile() {
+        display: none;
+      }
+      @include tablet() {
+        display: none;
+      }
+      .logo-wrapper {
+        display: flex;
+        gap: 0.5em;
+        @include laptop() {
+          margin-left: 1rem;
+          transform: translateY(2rem);
+        }
+        .logo {
+          width: 24.75px;
+          height: 25px;
+        }
+        .brand-name {
+          width: 138.44px;
+          height: 36px;
+        }
+      }
+      .welcomImage {
+        margin-top: 139px;
+        width: 600px;
+        height: 337.57px;
+        // border: solid red 1px;
+        @include laptop() {
+          width: 500px;
+          height: 337.57;
+          object-fit: cover;
+        }
+      }
+    }
+    .login {
+      font-family: Arial, Helvetica, sans-serif;
+
+      //   background-color: var(--color-secondary);
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      @include mobile() {
+        width: 100%;
+      }
+      @include tablet() {
+        width: 60%;
+      }
+      @include laptop() {
+        width: 40%;
+      }
+      @include large() {
+        width: 40%;
+      }
+      .loginContainer {
+        color: #545f7d;
+        width: 60%;
+        .welcomText {
+          padding-bottom: 2rem;
+          @include tablet() {
+            padding-bottom: 0.5rem;
+          }
+
+          h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: $primary;
+          }
+        }
+        form {
+          // width: 100%;
+          input {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 2rem 0;
+            border-radius: 5px;
+            @include mobile() {
+              padding: 12px;
+              margin: 1rem 0;
+            }
+
+            @include tablet() {
+              padding: 12px;
+              margin: 1rem 0;
+            }
+            @include laptop() {
+              margin: 1rem 0;
+            }
+            @include large() {
+              margin: 1rem 0;
+            }
+          }
+
+          p {
+            text-transform: uppercase;
+            color: $primary;
+          }
+          .login-btn button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 7px;
+            margin-top: 2rem;
+            border: none;
+            color: #eee;
+            font-weight: 200;
+            cursor: pointer;
+            background-color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

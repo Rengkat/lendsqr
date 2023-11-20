@@ -1,0 +1,84 @@
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
+.main-container {
+  width: 100%;
+  background-color: #e5e5e5;
+  position: relative;
+  box-sizing: border-box;
+  .contain {
+  }
+  nav {
+    position: sticky;
+    inset: 0;
+    z-index: 10;
+  }
+  main {
+    display: flex;
+    .overlay {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      inset: 0;
+      background-color: #000000a0;
+      z-index: 15;
+      @include tablet() {
+        display: none;
+      }
+      @include laptop() {
+        display: none;
+      }
+      @include large() {
+        display: none;
+      }
+    }
+    .sidebar-in {
+      transform: translateX(0%);
+      transition: transform 0.5s linear;
+    }
+
+    .sidebar-out {
+      transform: translateX(-100%);
+      transition: transform 0.5s linear;
+    }
+
+    .sidebar {
+      min-width: 15rem;
+      position: fixed;
+      left: 0;
+      background-color: #fff;
+    }
+    .large-screen {
+      background-color: #fff;
+      min-width: 15rem;
+      position: fixed;
+      @include mobile() {
+        display: none;
+      }
+    }
+    .mainContain {
+      width: 100%;
+      margin-left: 15rem;
+      @include mobile() {
+        margin-left: 0rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+.table-container {
+  width: 88%;
+  margin: 0 auto;
+  color: #545f7d;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 3rem;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  table {
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: collapse;
+    table-layout: auto;
+    thead {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: bold;
+      position: relative;
+      tr {
+        padding: 1rem;
+        .td {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    tbody {
+      td {
+        font-size: 15px;
+        padding: 1rem 5px;
+        border-bottom: 0.5px rgba(179, 177, 177, 0.416) solid;
+      }
+      .blacklist {
+        color: red;
+        background-color: rgba(225, 172, 172, 0.454);
+        display: inline-block;
+        padding: 10px;
+        border-radius: 15px;
+        text-transform: capitalize;
+      }
+      .active {
+        color: green;
+        background-color: rgba(172, 225, 174, 0.454);
+        display: inline-block;
+        padding: 10px;
+        border-radius: 15px;
+        text-transform: capitalize;
+      }
+      .pending {
+        color: rgb(163, 163, 6);
+        background-color: rgba(225, 220, 172, 0.454);
+        display: inline-block;
+        padding: 10px;
+        border-radius: 15px;
+        text-transform: capitalize;
+      }
+      .inactive {
+        color: gray;
+        background-color: rgba(163, 162, 162, 0.575);
+        display: inline-block;
+        padding: 10px;
+        border-radius: 15px;
+        text-transform: capitalize;
+      }
+      th {
+        text-align: left;
+      }
+    }
+  }
+}

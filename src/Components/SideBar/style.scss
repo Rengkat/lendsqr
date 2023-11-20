@@ -1,0 +1,86 @@
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
+.side-bar {
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  .logo-container {
+    display: flex;
+    gap: 0.5em;
+    margin: 3rem 0rem 0.5rem 2rem;
+
+    @include tablet() {
+      display: none;
+    }
+    @include laptop() {
+      display: none;
+    }
+    @include large() {
+      display: none;
+    }
+    .logo {
+      width: 24.75px;
+      height: 25px;
+      @include mobile() {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .brand-name {
+      height: 30px;
+      width: 115px;
+      @include mobile() {
+        height: 25px;
+        width: 90px;
+      }
+    }
+  }
+
+  .side-bar-container {
+    font-size: 16px;
+    padding: 2rem 0rem;
+    .Heading {
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      padding: 1rem 3rem;
+      color: gray;
+    }
+    .nav {
+      text-decoration: none;
+      display: flex;
+      gap: 0.8rem;
+      font-size: 1.2rem;
+      padding: 1rem 0rem 1rem 3rem;
+      color: gray;
+    }
+    .nav:hover {
+      transform: scale(1.02);
+      background-color: #e5ffff;
+      transition: all linear 100ms;
+    }
+    .nav.active {
+      color: #39cdcc;
+      border-left: #39cdcc 0.5rem solid;
+      background-color: #e5ffff;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+  }
+}

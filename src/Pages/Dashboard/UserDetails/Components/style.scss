@@ -1,0 +1,30 @@
+.top-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px rgba(128, 128, 128, 0.406) solid;
+  .full-name {
+    width: 12rem;
+  }
+  p {
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 0.5rem 0rem;
+  }
+}
+.top-grid-education {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px rgba(128, 128, 128, 0.406) solid;
+  .full-name {
+    width: 12rem;
+  }
+  p {
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 0.5rem 0rem;
+  }
+}

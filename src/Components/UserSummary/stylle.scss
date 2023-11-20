@@ -1,0 +1,45 @@
+.User-container {
+  padding: 3rem 5rem 3rem 5rem;
+  color: #213f7d;
+  font-family: Arial, Helvetica, sans-serif;
+  .flex {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 2.5rem;
+    gap: 2rem;
+    .box {
+      width: 25%;
+      padding: 2rem;
+      background: #ffffff;
+      border: 1px solid rgba(33, 63, 125, 0.06);
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+      color: #213f7d;
+      .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+      }
+      .users {
+        background: #e018ff56;
+        color: #df18ff;
+      }
+      .activeUser {
+        color: #5718ff;
+        background: #5618ff60;
+      }
+      .userWithLoan {
+        background: #f55f4452;
+        color: #f55f44;
+      }
+      .userWithSavings {
+        background: #ff33664b;
+        color: #ff3366;
+      }
+    }
+  }
+}
