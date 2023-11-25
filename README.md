@@ -25,7 +25,7 @@ Welcome to Lendsqr Dashboard, a user-friendly dashboard built with React, Sass, 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Rengkat/lendsqr.git
+   git clone https://github.com/Rengkat/lendsqr-fe-test.git
 2. Install dependencies:
    ```bash
    cd lendsqr
