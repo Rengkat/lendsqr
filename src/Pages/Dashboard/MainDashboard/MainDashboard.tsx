@@ -1,26 +1,23 @@
 import { useContext } from "react";
 import UserSummary from "../../../Components/UserSummary/UserSummary";
 import Barchat from "./Barchat";
-import PieCharts from "./PieChart";
-import SpiderChart from "./SpiderChart";
 import Spread from "./Spread";
-import { AppContext } from "../../../Context/AppContext";
 
 const MainDashboard = () => {
   return (
-    <div>
+    <div style={{ margin: "1rem 0rem 3rem 0" }}>
       <UserSummary />
       <div
         style={{
-          display: "flex",
-          gap: "10px",
-          padding: "5rem",
+          width: "100%",
+          padding: "2rem",
+          background: "#ffffff",
+          border: " 1px solid rgba(33, 63, 125, 0.06)",
+          boxShadow: "3px 5px 20px rgba(0, 0, 0, 0.04)",
+          borderRadius: "4px",
         }}>
-        <Barchat />
-        <PieCharts />
+        <Spread />
       </div>
-      <Spread />
-      <SpiderChart />
     </div>
   );
 };

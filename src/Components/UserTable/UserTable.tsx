@@ -30,31 +30,35 @@ const UserTable = ({ modifiedData }: TableProps) => {
   const [filteredData, setFilteredData] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const totalPages = Math.ceil(modifiedData.length / itemsPerPage);
 
-  // filter data
-  useEffect(() => {
-    const filterData = () => {
-      const filtered = modifiedData.filter((user: UserType) => {
-        const orgnameMatch =
-          orgname === "" || user.orgName.toLowerCase().includes(orgname.toLowerCase());
-        const usernameMatch =
-          name === "" || user.userName.toLowerCase().includes(name.toLowerCase());
-        const emailMatch = email === "" || user.email.toLowerCase().includes(email.toLowerCase());
-        const dateMatch =
-          date === "" || new Date(user.createdAt).toLocaleDateString().includes(date);
-        const phoneMatch = phone === "" || user.phoneNumber.includes(phone);
-        const statusMatch = status === "" || user.status.toLowerCase() === status.toLowerCase();
+  // Calculate the indexes for the current page
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
-        return (
-          orgnameMatch && usernameMatch && emailMatch && dateMatch && phoneMatch && statusMatch
-        );
-      });
+  // Slice the data for the current page
 
-      setFilteredData(filtered);
-    };
+  const filteredAndPaginatedData = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-    filterData();
-  }, [orgname, name, email, date, phone, status, modifiedData]);
+    const filteredData = modifiedData.filter((user: UserType) => {
+      const orgnameMatch =
+        orgname === "" || user.orgName.toLowerCase().includes(orgname.toLowerCase());
+      const usernameMatch = name === "" || user.userName.toLowerCase().includes(name.toLowerCase());
+      const emailMatch = email === "" || user.email.toLowerCase().includes(email.toLowerCase());
+      const dateMatch = date === "" || new Date(user.createdAt).toLocaleDateString().includes(date);
+      const phoneMatch = phone === "" || user.phoneNumber.includes(phone);
+      const statusMatch = status === "" || user.status.toLowerCase() === status.toLowerCase();
+
+      return orgnameMatch && usernameMatch && emailMatch && dateMatch && phoneMatch && statusMatch;
+    });
+
+    const slicedData = filteredData.slice(startIndex, endIndex);
+
+    return slicedData;
+  };
+
   const handleFilter = (e: FormEvent) => {
     e.preventDefault();
     setIsFormOpen((prev) => !prev);
@@ -69,15 +73,6 @@ const UserTable = ({ modifiedData }: TableProps) => {
     setStatus("");
     setIsFormOpen((prev) => !prev);
   };
-
-  const totalPages = Math.ceil(modifiedData.length / itemsPerPage);
-
-  // Calculate the indexes for the current page
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  // Slice the data for the current page
-  const currentData = modifiedData.slice(startIndex, endIndex);
 
   // Update the page when the data or itemsPerPage changes
   useEffect(() => {
@@ -160,7 +155,7 @@ const UserTable = ({ modifiedData }: TableProps) => {
                 </div>
               </>
             ) : (
-              currentData.map((user: UserType) => {
+              filteredAndPaginatedData().map((user: UserType) => {
                 return (
                   <Fragment key={user.id}>
                     <tr>
