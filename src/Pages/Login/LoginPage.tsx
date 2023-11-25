@@ -5,14 +5,11 @@ import "./Style.scss";
 import logo from "../../assets/Union.png";
 import banner from "../../assets/lendsqr.png";
 import welcomImage from "../../assets/pablo-sign-in 1.png";
-import { useSelector, useDispatch } from "react-redux";
-import { updateUser } from "../../Redux/Features/LoginSlice";
 import { AppContext } from "../../Context/AppContext";
 
 // === Form input field types ===
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
   const { getLoginUser } = useContext(AppContext);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +17,6 @@ const LoginPage = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (password && email) {
-      dispatch(updateUser({ email, password }));
       getLoginUser({ email, password });
       navigate("/");
     } else {

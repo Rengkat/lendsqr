@@ -1,7 +1,7 @@
-import { IndividualType } from "../../../../Constants/constants";
+import { UserType } from "../../../../Constants/constants";
 
 interface SocialsProps {
-  socials: IndividualType;
+  socials: UserType;
 }
 
 const Social = ({ socials }: SocialsProps) => {

@@ -1,8 +1,8 @@
+import { UserType, cleanPhoneNumber } from "../../../../Constants/constants";
 import "./style.scss";
-import { IndividualType } from "../../../../Constants/constants";
 
 interface DetailsProps {
-  profile: IndividualType;
+  profile: UserType;
 }
 const DetailsComponent = ({ profile }: DetailsProps) => {
   return (
@@ -30,18 +30,18 @@ const DetailsComponent = ({ profile }: DetailsProps) => {
         <p>gender</p>
         <h3>{profile?.profile?.gender}</h3>
       </div>
-      {/* <div className="marital-status">
+      <div className="marital-status">
         <p>marital status</p>
-        <h3>{profile?.}</h3>
+        <h3>single</h3>
       </div>
       <div className="children">
         <p>children</p>
-        <h3>{profile.children}</h3>
+        <h3>5</h3>
       </div>
       <div className="residence">
         <p>types of residence</p>
-        <h3>{profile.address}</h3>
-      </div> */}
+        <h3>Lorem, ipsum dolor.</h3>
+      </div>
     </div>
   );
 };

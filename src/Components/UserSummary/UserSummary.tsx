@@ -1,10 +1,14 @@
 import { userInfo } from "../../Constants/constants";
+import { AppContext } from "../../Context/AppContext";
+import { useContext } from "react";
 import "./stylle.scss";
 
 const UserSummary = () => {
+  const { users, loadingUsers } = useContext(AppContext);
+
   return (
     <div className="User-container">
-      <h1>Users</h1>
+      <h1>Summary</h1>
 
       <div className="flex">
         {userInfo.map((detail) => {

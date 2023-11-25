@@ -1,6 +1,6 @@
-import { IndividualType } from "../../../../Constants/constants";
+import { UserType } from "../../../../Constants/constants";
 type GurantorProp = {
-  gurantor: IndividualType;
+  gurantor: UserType;
 };
 const Gurantor = ({ gurantor }: GurantorProp) => {
   return (

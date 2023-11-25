@@ -158,21 +158,6 @@ export const userInfo: UserInfor[] = [
     numbers: "102,456",
   },
 ];
-export interface IndividualType {
-  createdAt: string;
-  orgName: string;
-  userName: string;
-  email: string;
-  phoneNumber: string;
-  lastActiveDate: string;
-  profile: Profile;
-  guarantor: Guarantor;
-  accountBalance: string;
-  accountNumber: string;
-  socials: Socials;
-  education: Education;
-  id: string;
-}
 
 export interface Profile {
   firstName: string;
@@ -208,3 +193,97 @@ export interface Education {
   monthlyIncome: string[];
   loanRepayment: string;
 }
+
+type MonthlyIncome = [string, string];
+
+export interface UserType {
+  createdAt: string;
+  orgName: string;
+  userName: string;
+  email: string;
+  phoneNumber: string;
+  lastActiveDate: string;
+  profile: Profile;
+  guarantor: Guarantor;
+  accountBalance: string;
+  accountNumber: string;
+  socials: Socials;
+  education: Education;
+  id: string;
+  status: string;
+  optionOpen: boolean;
+}
+export function formatDate(inputDateString: string) {
+  const inputDate = new Date(inputDateString);
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const day = inputDate.getDate();
+  const month = months[inputDate.getMonth()];
+  const year = inputDate.getFullYear();
+  const hour = inputDate.getHours();
+  const minute = inputDate.getMinutes();
+  const period = hour >= 12 ? "PM" : "AM";
+
+  const formattedDate = `${month} ${day}, ${year} ${hour % 12}:${minute}${period}`;
+  return formattedDate;
+}
+export function cleanPhoneNumber(phoneNumber: string) {
+  return phoneNumber.replace(/ x.*/, "");
+}
+
+export type UserProfile = {
+  createdAt: string;
+  orgName: string;
+  userName: string;
+  email: string;
+  phoneNumber: string;
+  lastActiveDate: string;
+  profile: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    avatar: string;
+    gender: string;
+    bvn: string;
+    address: string;
+    currency: string;
+  };
+  guarantor: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    gender: string;
+    address: string;
+  };
+  accountBalance: string;
+  accountNumber: string;
+  socials: {
+    facebook: string;
+    instagram: string;
+    twitter: string;
+  };
+  education: {
+    level: string;
+    employmentStatus: string;
+    sector: string;
+    duration: string;
+    officeEmail: string;
+    monthlyIncome: string[];
+    loanRepayment: string;
+  };
+  id: string;
+};

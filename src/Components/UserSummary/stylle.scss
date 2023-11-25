@@ -1,21 +1,58 @@
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
 .User-container {
-  padding: 3rem 5rem 3rem 5rem;
+  // padding: 3rem 2rem 3rem 2rem;
   color: #213f7d;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 2rem 0;
   .flex {
     padding-top: 40px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     line-height: 2.5rem;
-    gap: 2rem;
+    gap: 1rem;
+    @include mobile() {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-left: -0.3rem;
+    }
+    @include tablet() {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include laptop() {
+      grid-template-columns: repeat(2, 1fr);
+    }
     .box {
-      width: 25%;
+      width: 100%;
       padding: 2rem;
       background: #ffffff;
       border: 1px solid rgba(33, 63, 125, 0.06);
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
       border-radius: 4px;
       color: #213f7d;
+      transition: background-color 0.8s;
+      &:hover {
+        background-color: #39cdcd79;
+        cursor: pointer;
+      }
       .icon {
         display: flex;
         justify-content: center;

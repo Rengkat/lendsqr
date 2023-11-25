@@ -1,19 +1,16 @@
-import React from "react";
+import { useContext } from "react";
 import UserSummary from "../../../Components/UserSummary/UserSummary";
 import Barchat from "./Barchat";
 import PieCharts from "./PieChart";
 import SpiderChart from "./SpiderChart";
 import Spread from "./Spread";
-import { useGetUsersQuery } from "../../../Redux/Api/UserApi";
+import { AppContext } from "../../../Context/AppContext";
 
 const MainDashboard = () => {
-  const { data, isFetching } = useGetUsersQuery(undefined);
-  const tenCustomer = data?.slice(0, 10);
-
   return (
     <div>
       <UserSummary />
-      {/* <div
+      <div
         style={{
           display: "flex",
           gap: "10px",
@@ -21,9 +18,9 @@ const MainDashboard = () => {
         }}>
         <Barchat />
         <PieCharts />
-      </div> */}
-      {/* <Spread />
-      <SpiderChart /> */}
+      </div>
+      <Spread />
+      <SpiderChart />
     </div>
   );
 };

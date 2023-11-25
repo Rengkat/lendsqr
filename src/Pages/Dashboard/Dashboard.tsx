@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Nav from "../../Components/Nav/Nav";
 import SideBar from "../../Components/SideBar/SideBar";
 import "./style.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { useContext } from "react";
 import { AppContext } from "../../Context/AppContext";
 const SharedLayout = () => {
@@ -27,7 +26,7 @@ const SharedLayout = () => {
               <SideBar />
             </div>
           </div>
-          <div className="mainContain">
+          <div className="mainContain" style={{ padding: "1rem" }}>
             <Outlet />
           </div>
         </main>

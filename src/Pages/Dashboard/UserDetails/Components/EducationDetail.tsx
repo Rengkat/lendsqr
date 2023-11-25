@@ -1,7 +1,7 @@
-import { IndividualType } from "../../../../Constants/constants";
+import { UserType } from "../../../../Constants/constants";
 
 interface EducationProp {
-  education: IndividualType;
+  education: UserType;
 }
 const EducationDetail = ({ education }: EducationProp) => {
   return (

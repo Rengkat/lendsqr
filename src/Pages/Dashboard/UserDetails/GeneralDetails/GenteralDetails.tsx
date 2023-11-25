@@ -5,9 +5,9 @@ import EducationDetail from "../Components/EducationDetail";
 import Social from "../Components/Social";
 import Gurantor from "../Components/Gurantor";
 import { useOutletContext } from "react-router-dom";
-import { IndividualType } from "../../../../Constants/constants";
+import { UserType } from "../../../../Constants/constants";
 interface dataType {
-  data: IndividualType;
+  data: UserType;
 }
 const GenteralDetails = () => {
   const { data }: dataType = useOutletContext();

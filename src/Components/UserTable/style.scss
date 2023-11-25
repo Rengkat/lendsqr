@@ -1,41 +1,92 @@
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
 .table-container {
-  width: 88%;
   margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
   color: #545f7d;
-  display: flex;
-  justify-content: center;
-  padding: 2rem 3rem;
-  background-color: white;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+  @include laptop() {
+    padding: 2rem;
+  }
+  @include large() {
+    padding: 2rem;
+  }
   table {
     width: 100%;
     border-radius: 10px;
-    border-collapse: collapse;
-    table-layout: auto;
     thead {
-      font-size: 13px;
+      font-size: 7px;
       text-transform: uppercase;
       font-weight: bold;
-      position: relative;
+      width: 100%;
+      border: red 2px solid;
+      @include laptop() {
+        font-size: 12px;
+      }
+      @include large() {
+        font-size: 13px;
+      }
       tr {
-        padding: 1rem;
-        .td {
-          display: flex;
-          align-items: center;
+        width: 100%;
+        th {
+          padding: 0.5rem 0 2rem 0;
+          text-align: left;
+          .table-header-cell {
+            display: flex;
+            align-items: center;
+            .icon {
+              @include laptop() {
+                font-size: 18px;
+              }
+              @include large() {
+                font-size: 25px;
+              }
+            }
+          }
         }
       }
     }
+
     tbody {
       td {
-        font-size: 15px;
-        padding: 1rem 5px;
+        font-size: 9px;
+        padding: 12px 0;
+        // text-transform:;
         border-bottom: 0.5px rgba(179, 177, 177, 0.416) solid;
+        @include laptop() {
+          font-size: 12px;
+        }
+        @include large() {
+          font-size: 13px;
+        }
       }
       .blacklist {
         color: red;
         background-color: rgba(225, 172, 172, 0.454);
         display: inline-block;
-        padding: 10px;
+        padding: 5px 15px;
         border-radius: 15px;
         text-transform: capitalize;
       }
@@ -43,7 +94,7 @@
         color: green;
         background-color: rgba(172, 225, 174, 0.454);
         display: inline-block;
-        padding: 10px;
+        padding: 5px 15px;
         border-radius: 15px;
         text-transform: capitalize;
       }
@@ -51,7 +102,7 @@
         color: rgb(163, 163, 6);
         background-color: rgba(225, 220, 172, 0.454);
         display: inline-block;
-        padding: 10px;
+        padding: 5px 15px;
         border-radius: 15px;
         text-transform: capitalize;
       }
@@ -63,9 +114,59 @@
         border-radius: 15px;
         text-transform: capitalize;
       }
-      th {
-        text-align: left;
+      .box {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: -7rem;
+        width: 10rem;
+        padding: 0.5rem 1.5rem;
+        border: 1px solid rgba(33, 63, 125, 0.06);
+        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+        background: #fff;
+
+        aside {
+          display: flex;
+          gap: 0.5rem;
+          margin: 15px 0;
+          cursor: pointer;
+          font-size: 12px;
+          text-decoration: none;
+        }
       }
+    }
+  }
+}
+.pagination {
+  margin: 20px 0 5rem 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #545f7d;
+  display: flex;
+  justify-content: space-between;
+  .select {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    select {
+      padding: 3px 10px;
+      background-color: #e6e6e6;
+      outline: none;
+      border: none;
+    }
+  }
+  .right-p {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    .p-btn {
+      padding: 5px 7px;
+      background-color: #e6e6e6;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.2rem;
     }
   }
 }

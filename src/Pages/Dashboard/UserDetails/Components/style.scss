@@ -1,30 +1,79 @@
-.top-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px rgba(128, 128, 128, 0.406) solid;
-  .full-name {
-    width: 12rem;
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
   }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
+.top-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+  font-size: 0.5rem;
+  border-bottom: 1px rgba(128, 128, 128, 0.406) solid;
+  @include laptop() {
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 1rem;
+  }
+  @include large() {
+    font-size: 0.8rem;
+
+    grid-template-columns: repeat(5, 1fr);
+  }
+
   p {
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 10px;
     padding: 0.5rem 0rem;
+    @include laptop() {
+      font-size: 12px;
+    }
+    @include large() {
+      font-size: 12px;
+    }
   }
 }
 .top-grid-education {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  font-size: 0.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px rgba(128, 128, 128, 0.406) solid;
-  .full-name {
-    width: 12rem;
+  border-bottom: 1px #e8e8e8 solid;
+  @include laptop() {
+    font-size: 0.8rem;
+    grid-template-columns: repeat(4, 1fr);
   }
+  @include large() {
+    font-size: 0.8rem;
+
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   p {
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 10px;
     padding: 0.5rem 0rem;
+    @include laptop() {
+      font-size: 12px;
+    }
+    @include large() {
+      font-size: 12px;
+    }
   }
 }

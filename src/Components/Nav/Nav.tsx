@@ -7,9 +7,9 @@ import { FaUserCircle } from "react-icons/fa";
 import { ImMenu } from "react-icons/im";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { useState, useContext } from "react";
-import { removeUserFromLocalStorage } from "../../Redux/Features/localStorage";
 import { AppContext } from "../../Context/AppContext";
 import { useNavigate } from "react-router-dom";
+import { removeUserFromLocalStorage } from "../../Context/LocalStorage";
 
 function Nav() {
   // const { openSideBar } = useSelector((state: any) => state.login);
