@@ -23,7 +23,10 @@ const initialState: State = {
 };
 export const AppContext = createContext<AppState>({} as AppState);
 const AppProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(Reducer as React.Reducer<State, Action>, initialState);
+  const [state, dispatch] = useReducer(
+    Reducer as React.Reducer<State, Action>,
+    initialState
+  );
 
   const openMainNav = () => {
     dispatch({ type: "OPEN_MAIN_MENU" });
@@ -31,6 +34,7 @@ const AppProvider = ({ children }: Props) => {
   // get user
   const getLoginUser = (user: User) => {
     addUserToLocalStorage(user);
+    dispatch({ type: "GET_LOGIN_USER", payload: user });
   };
   // fetch data and some missing data
   useEffect(() => {
@@ -95,7 +99,15 @@ const AppProvider = ({ children }: Props) => {
 
   return (
     <AppContext.Provider
-      value={{ ...state, openMainNav, getLoginUser, openDetail, closeDetail, changeUserStatus }}>
+      value={{
+        ...state,
+        openMainNav,
+        getLoginUser,
+        openDetail,
+        closeDetail,
+        changeUserStatus,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
